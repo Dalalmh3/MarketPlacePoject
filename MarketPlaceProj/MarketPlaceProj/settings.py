@@ -88,6 +88,12 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+#  'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME':'marketplace_db', #os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'USER': 'postgres',
+#         'PASSWORD': '1234',
+#         'HOST': 'localhost'
 
 
 # Password validation
