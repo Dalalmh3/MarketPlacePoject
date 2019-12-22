@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Product
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
-
+from .forms import ProductForm
 # Create your views here.
 
 def index(request):
@@ -10,6 +10,44 @@ def index(request):
         "all_products": Product.objects.all(),
     }
     return render(request, "MarketPlaceApp/index.html", context ) 
+
+
+def login(request):
+    return render(request, "MarketPlaceApp/login.html" ) 
+
+
+
+def create_product(request):
+    if request.method == "POST":
+        form = ProductForm(request.POST)
+        if form.is_valid:
+            form.save()
+
+    return redirect('/')
+
+
+
+def add_product(request):
+    # if request.method == "POST":
+    #     form = ProductForm(request.POST)
+    #     if form.is_valid:
+    #         form.save()
+
+
+    form = ProductForm()
+    return render(request, "MarketPlaceApp/add_product.html",{'form':form})
+
+
+# def Snippet_detail(request):
+#     if request.method == "POST":
+#         form = SnippetForm(request.POST)
+#         if form.is_valid():
+#             print("valid")
+
+#     form = SnippetForm()
+#     return render(request, 'form.html',{'form':form})
+
+
 
 
 def upload_file(request):
